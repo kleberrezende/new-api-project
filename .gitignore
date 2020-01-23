@@ -1,0 +1,49 @@
+# Directories #
+*/target
+/bin
+/RemoteSystemsTempFiles
+
+# Compiled source #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+.metadata/
+
+# OS generated files #
+.DS_Store
+Icon?
+Thumbs.db
+
+# Mysql Workbench #
+*.mwb.bak
+
+# Eclipse generated files #
+.classpath
+*.project
+*.settings
+
+# NetBeans generated files #
+.nbactions.xml
+.navData
+*.NavData
+.catalog.xml
+nb-configuration.xml
+*/nbproject/private/
+*/nbproject/*
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# IntelliJ IDEA generated files #
+.idea
+*.iws
+*.iml
+*.ipr
+
+.history
+/history
