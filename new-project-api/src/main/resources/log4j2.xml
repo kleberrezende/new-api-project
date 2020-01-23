@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="warn" name="omnichannel">
+    <Properties>
+        <Property name="LOG_CONSOLE">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} %highlight{%5p} ${hostName} --- [%15.15t] %-40.40c{1.} : %m%n%ex
+        </Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_CONSOLE}"/>
+        </Console>
+
+        <SMTP name="SMTPAppender"
+              from="meusite@gmail.com.br"
+              to="meusite@gmail.com.br"
+              subject="[LOG] [newproject] [${hostName}]"
+              smtpHost="mail.meusite.com.br"
+              smtpPort="587"
+              smtpProtocol="smtp"
+              smtpUsername="meusite@gmail.com.br"
+              smtpPassword="????"
+              bufferSize="10"
+              smtpDebug="false">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+
+            <HTMLLayout charset="UTF-8" title="Error Logs" contentType="text/html"/>
+        </SMTP>
+
+        <Async name="AsyncSMTP" bufferSize="1">
+            <AppenderRef ref="SMTPAppender"/>
+        </Async>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="br.com.virtualab" level="debug" additivity="false">
+            <AppenderRef ref="ConsoleAppender" />
+            <!--<AppenderRef ref="AsyncSMTP" />-->
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender" />
+            <!--<AppenderRef ref="AsyncSMTP" />-->
+        </Root>
+    </Loggers>
+</Configuration>
